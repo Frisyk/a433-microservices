@@ -3,7 +3,7 @@
 # Variabel untuk GitHub Packages username dan nama image
 github_username="frisyk" # Sesuaikan dengan username GitHub Anda
 image_name="item-app"
-project="a433-microservices"
+project="microservices"
 tag="v1"
 github_repo="ghcr.io/$github_username/$project"
 

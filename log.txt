@@ -1,0 +1,5 @@
+ Container submission1-item-db-1  Running
+ Container submission1-item-app-1  Recreate
+ Container submission1-item-app-1  Recreated
+ Container submission1-item-app-1  Starting
+ Container submission1-item-app-1  Started

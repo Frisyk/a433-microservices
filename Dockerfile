@@ -1,14 +1,21 @@
-# Node.js version 14 base image
+# Gunakan base image Node.js versi 14
 FROM node:14
-# Production app runs on port 8080
-EXPOSE 8080
-# Set production mode and use app-db as the database host
-ENV NODE_ENV=production DB_HOST=app-db 
-# Set working directory to where source is
+
+# Menentukan working directory di dalam container
 WORKDIR /app
-# Copy source files into container
-COPY . /app
-# Install production dependencies and build app
+
+# Salin seluruh source code ke working directory
+COPY . .
+
+# Menentukan environment variable untuk production mode dan database host
+ENV NODE_ENV=production \
+    DB_HOST=item-db
+
+# Install dependencies untuk production dan build aplikasi
 RUN npm install --production --unsafe-perm && npm run build
-# Start the server in production mode and use app-db as db host
+
+# Ekspos port yang digunakan oleh aplikasi
+EXPOSE 8080
+
+# Jalankan server saat container diluncurkan
 CMD ["npm", "start"]

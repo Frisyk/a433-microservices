@@ -1,0 +1,2 @@
+github packages: https://github.com/users/Frisyk/packages/container/package/microservices
+github repo : https://github.com/Frisyk/a433-microservices

@@ -1,0 +1,12 @@
+apiVersion: v1  # Menentukan API versi yang digunakan untuk Service
+kind: Service  # Menentukan jenis resource, yaitu Service
+metadata:
+  name: karsajobs-ui-service  # Nama Service dalam Kubernetes
+spec:
+  selector:
+    app: karsajobs-ui  # Service ini akan mengarahkan traffic ke pod yang memiliki label "app: karsajobs-ui"
+  ports:
+    - protocol: TCP  # Protokol yang digunakan, yaitu TCP
+      port: 8080  # Port yang akan diekspos oleh Service
+      targetPort: 8080  # Port dalam pod yang menerima traffic dari Service
+  type: NodePort  # Service akan diekspos melalui port pada node cluster Kubernetes

@@ -1,0 +1,2 @@
+github packages karsajobs : https://github.com/users/Frisyk/packages/container/package/karsajobs
+github packages karsajobs-ui : https://github.com/users/Frisyk/packages/container/package/karsajobs-ui

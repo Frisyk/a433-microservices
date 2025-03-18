@@ -1,0 +1,34 @@
+apiVersion: apps/v1  # Menentukan API versi yang digunakan untuk Deployment
+kind: Deployment  # Menentukan jenis resource, yaitu Deployment
+metadata:
+  name: karsajobs  # Nama Deployment yang akan digunakan dalam Kubernetes
+spec:
+  replicas: 2  # Menentukan jumlah pod yang harus berjalan (2 replika)
+  selector:
+    matchLabels:
+      app: karsajobs  # Selector untuk mencocokkan pod berdasarkan label "app: karsajobs"
+  template:  # Template untuk pod yang akan dibuat
+    metadata:
+      labels:
+        app: karsajobs  # Menambahkan label ke pod agar sesuai dengan selector Deployment
+    spec:
+      containers:  # Daftar container yang akan dijalankan dalam setiap pod
+        - name: karsajobs  # Nama container dalam pod
+          image: ghcr.io/frisyk/karsajobs:latest  # Image yang digunakan untuk container dari GitHub Container Registry
+          ports:
+            - containerPort: 8080  # Container akan mendengarkan pada port 8080
+          env:  # Daftar variabel lingkungan (environment variables)
+            - name: APP_PORT
+              value: "8080"  # Menentukan port aplikasi yang digunakan di dalam container
+            - name: MONGO_HOST
+              value: "mongo-service"  # Hostname untuk MongoDB, biasanya merujuk ke service di dalam cluster
+            - name: MONGO_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret  # Mengambil nilai username dari secret yang bernama "mongo-secret"
+                  key: MONGO_ROOT_USERNAME  # Key dalam secret yang berisi username MongoDB
+            - name: MONGO_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret  # Mengambil nilai password dari secret yang bernama "mongo-secret"
+                  key: MONGO_ROOT_PASSWORD  # Key dalam secret yang berisi password MongoDB

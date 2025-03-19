@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
         - name: karsajobs-ui  # Nama container dalam pod
-          image: ghcr.io/frisyk/karsajobs:latest  # Image yang digunakan untuk menjalankan container
+          image: ghcr.io/frisyk/karsajobs-ui:latest  # Image yang digunakan untuk menjalankan container
           ports:
             - containerPort: 8000  # Container akan mendengarkan pada port 8080
           env:
             - name: VUE_APP_BACKEND  # Variabel lingkungan (environment variable) yang diberikan ke container
-              value: "http://localhost:30352"  # Nilai dari variabel lingkungan, digunakan oleh frontend untuk mengakses backend
+              value: "http://localhost:31791"  # Nilai dari variabel lingkungan, digunakan oleh frontend untuk mengakses backend
